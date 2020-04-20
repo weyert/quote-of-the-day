@@ -1,0 +1,47 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:root {
+  --main-bg-color: black;
+  --quote-text-color: white;
+  --quote-marker-color: red;
+  --author-text-color: white;
+}
+
+body:not(has-dark-mode) {
+  --main-bg-color: #fbf8e7;
+  --quote-text-color: black;
+  --quote-marker-color: red;
+  --author-text-color: #a4946a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-bg-color: #fbf8e7;
+    --quote-text-color: black;
+    --quote-marker-color: red;
+    --author-text-color: #a4946a;
+  }
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Source Serif Pro", Georgia, "Times New Roman", Times, serif;
+  background-color: var(--main-bg-color);
+  text-rendering: optimizeLegibility;
+  font-size: 1.75rem;
+  line-height: 1.4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.align {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
