@@ -11,7 +11,7 @@
   --author-text-color: white;
 }
 
-body:not(has-dark-mode) {
+body:not(.has-dark-mode) {
   --main-bg-color: #fbf8e7;
   --quote-text-color: black;
   --quote-marker-color: red;
