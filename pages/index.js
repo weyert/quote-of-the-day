@@ -11,9 +11,11 @@ export default function Index() {
   const quoteElement = React.useRef(null);
 
   React.useEffect(() => {
-    document.body.classList.add("has-dark-mode");
-    if (quoteElement.current) {
-      quoteElement.current.classList.add("anim-fadeIn");
+    if (typeof document !== "undefined") {
+      document.body.classList.add("has-dark-mode");
+      if (quoteElement.current) {
+        quoteElement.current.classList.add("anim-fadeIn");
+      }
     }
   }, []);
 
