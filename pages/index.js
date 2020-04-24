@@ -95,6 +95,10 @@ export default function Index() {
           color: var(--quote-marker-color);
         }
 
+        p {
+          user-select: none !important;
+        }
+
         .quote__body {
           font-weight: 600;
           font-size: 1.5em;
