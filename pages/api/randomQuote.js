@@ -1,23 +1,33 @@
-import allQuotes from "../../quotes.json";
+import allQuotes from '../../facts.json'
+import parse from 'date-fns/parse'
+import format from 'date-fns/format'
 
 export default (req, res) => {
-  const { author } = req.query;
-  let quotes = allQuotes;
+  const { author } = req.query
+  let quotes = allQuotes
 
   if (author) {
-    quotes = quotes.filter((quote) => {
-      return true;
-    });
-    // quotes = quotes.filter((quote) =>
-    //   quote.author?.toLowerCase().includes(author.toLowerCase())
-    // );
+    quotes = quotes.filter((quote) => quote.author?.toLowerCase().includes(author.toLowerCase()))
   }
 
   if (!quotes.length) {
-    quotes = allQuotes.filter((quote) => quote.author === null);
+    quotes = allQuotes.filter((quote) => quote.author === null)
   }
 
-  const quote = quotes[Math.floor(Math.random() * quotes.length)];
+  const quote = quotes[Math.floor(Math.random() * quotes.length)]
 
-  res.status(200).json(quote);
-};
+  const quoteDate = quote.date.substr(1)
+  const isCompleteDate = quote.date.includes('/')
+  const kind = quote.date === '-' ? 'BC' : 'AD'
+  const formattedDate = isCompleteDate
+    ? format(parse(quoteDate, 'yyyy/MM/dd', new Date()), 'MMMMMM')
+    : `${quoteDate} ${kind}`
+  const formattedQuote = {
+    date: formattedDate,
+    content: quote.description,
+    category: quote.category1,
+    country: quote.category2,
+    author: `${formattedDate}, ${quote.category2}, ${quote.category1}`,
+  }
+  res.status(200).json(formattedQuote)
+}

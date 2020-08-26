@@ -1,40 +1,43 @@
-import React, { useRef, useEffect } from "react";
-import { useRouter } from "next/router";
-import useSWR from "swr";
+import React, { useRef, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
 
 function fetcher(url) {
-  return fetch(url).then((r) => r.json());
+  return fetch(url).then((r) => r.json())
 }
 
 export default function Index() {
   // Reference to the element containing the words to animate
-  const quoteElement = React.useRef(null);
+  const quoteElement = React.useRef(null)
+  const { query } = useRouter()
 
   React.useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.body.classList.add("has-dark-mode");
+    if (typeof document !== 'undefined') {
+      if (query.mode === 'dark') {
+        document.body.setAttribute('data-theme', 'dark')
+      }
+
       if (quoteElement.current) {
-        quoteElement.current.classList.add("anim-fadeIn");
+        quoteElement.current.classList.add('anim-fadeIn')
       }
     }
-  }, []);
+  }, [query])
 
-  const { query } = useRouter();
   const { data, error } = useSWR(
-    `/api/randomQuote${query.author ? "?author=" + query.author : ""}`,
+    `/api/randomQuote${query.author ? '?author=' + query.author : ''}`,
     fetcher
-  );
+  )
 
-  const isDarkMode = query.mode == "dark";
+  const isDarkMode = query.mode == 'dark'
 
   // The following line has optional chaining, added in Next.js v9.1.5,
   // is the same as `data && data.author`
-  const author = data?.author;
-  let quote = data?.content ?? "Missing quote";
-  let quoteAsWords = quote.split(" ");
+  const author = data?.author
+  let quote = data?.content ?? 'Missing quote'
+  let quoteAsWords = quote.split(' ')
 
-  if (!data) quote = "Loading...";
-  if (error) quote = "Failed to fetch the quote.";
+  if (!data) quote = 'Loading...'
+  if (error) quote = 'Failed to fetch the quote.'
 
   return (
     <main className="wrapper align">
@@ -83,7 +86,7 @@ export default function Index() {
         }
 
         .quote::before {
-          content: "“";
+          content: '“';
           position: absolute;
           top: 0;
           left: 0.325em;
@@ -108,7 +111,7 @@ export default function Index() {
         .quote__author {
           font-size: 0.75em;
           font-style: normal;
-          font-family: "Source Sans Pro", Helvetica, sans-serif;
+          font-family: 'Source Sans Pro', Helvetica, sans-serif;
           font-weight: 300;
           line-height: 1;
           vertical-align: middle;
@@ -116,10 +119,10 @@ export default function Index() {
         }
 
         .quote__author::before {
-          content: "—";
+          content: '—';
           padding-right: 0.25em;
         }
       `}</style>
     </main>
-  );
+  )
 }

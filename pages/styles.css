@@ -5,31 +5,22 @@
 }
 
 :root {
-  --main-bg-color: black;
-  --quote-text-color: white;
-  --quote-marker-color: red;
-  --author-text-color: white;
-}
-
-body:not(.has-dark-mode) {
   --main-bg-color: #fbf8e7;
   --quote-text-color: black;
   --quote-marker-color: red;
   --author-text-color: #a4946a;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --main-bg-color: #fbf8e7;
-    --quote-text-color: black;
-    --quote-marker-color: red;
-    --author-text-color: #a4946a;
-  }
+[data-theme='dark'] {
+  --main-bg-color: black;
+  --quote-text-color: white;
+  --quote-marker-color: red;
+  --author-text-color: white;
 }
 
 body {
   min-height: 100vh;
-  font-family: "Source Serif Pro", Georgia, "Times New Roman", Times, serif;
+  font-family: 'Source Serif Pro', Georgia, 'Times New Roman', Times, serif;
   background-color: var(--main-bg-color);
   text-rendering: optimizeLegibility;
   font-size: 1.75rem;
