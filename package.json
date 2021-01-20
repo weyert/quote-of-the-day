@@ -9,7 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "date-fns": "^2.15.0",
-    "gsap": "^3.5.0",
+    "gsap": "^3.6.0",
     "luxon": "^1.25.0",
     "next": "latest",
     "react": "^16.13.1",
