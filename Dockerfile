@@ -24,10 +24,10 @@ ENV NPM_CONFIG_LOGLEVEL warn
 RUN npm install -g pnpm
 RUN pnpm run build
 
-RUN ls -la
-
 FROM node:18-alpine AS runner
 WORKDIR /app
+
+RUN npm install -g pnpm
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
@@ -37,8 +37,8 @@ RUN adduser --system --uid 1001 nextjs
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
 
 USER nextjs
 
@@ -46,4 +46,4 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-CMD ["node", "server.js"]
+CMD ["pnpm", "start"]
