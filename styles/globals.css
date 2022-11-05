@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.quote::before {
+  content: '“';
+  position: absolute;
+  left: -4rem;
+  top: 0;
+
+  font-size: 4em;
+  font-weight: 800;
+  line-height: 1;
+
+  color: rgb(var(--quote-marker-color));
+}
