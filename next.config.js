@@ -11,7 +11,7 @@ const nextConfig = {
 
   poweredByHeader: false,
   // Not supported in Next.js 13
-  // output: 'standalone',
+  output: 'standalone',
 
   env: {
     API_HOST: process.env.API_HOST
