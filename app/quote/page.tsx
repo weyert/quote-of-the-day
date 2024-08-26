@@ -2,19 +2,19 @@ import * as React from "react";
 import { UsageTracker } from "../../components/UsageTracker";
 
 async function getQuoteOfDay() {
-  const apiHost = process.env.API_HOST;
+  const apiHost = "";
   const res = await fetch(`${apiHost}/api/randomQuote`, { cache: "no-store" });
   return res.json();
 }
 
 async function getFactOfDay() {
-  const apiHost = process.env.API_HOST;
+  const apiHost = "";
   const res = await fetch(`${apiHost}/api/randomFact`, { cache: "no-store" });
   return res.json();
 }
 
 async function getBirthOfDay() {
-  const apiHost = process.env.API_HOST;
+  const apiHost = "";
   const res = await fetch(`${apiHost}/api/randomBirth`, { cache: "no-store" });
   return res.json();
 }
