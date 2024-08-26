@@ -1,6 +1,7 @@
 import * as React from 'react'
 import '../styles/globals.css'
 import { serif, sans } from '../styles/fonts'
+import { CSPostHogProvider } from './providers';
 
 export default function RootLayout({ children }) {
   return (
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
       `}
       </style>
       </head>
-      <body className="selection:bg-accent selection:text-white">{children}</body>
+      <CSPostHogProvider>
+        <body className="selection:bg-accent selection:text-white">{children}</body>
+      </CSPostHogProvider>
     </html>
   );
 }

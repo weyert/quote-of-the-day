@@ -1,4 +1,5 @@
 import * as React from "react";
+import { UsageTracker } from "../../components/UsageTracker";
 
 async function getQuoteOfDay() {
   const apiHost = process.env.API_HOST;
@@ -53,6 +54,14 @@ export default async function Page() {
             </p>
           </section>
         </blockquote>
+        <pre>{JSON.stringify({ yearOfQuote })}</pre>
+
+        <UsageTracker usageFacts={{
+          quoteYear: quote.year ?? quote.date,
+          factYear: dailyFact.year,
+          birthYear: birth.year,
+        }} />
+
       </div>
     </main>
   );

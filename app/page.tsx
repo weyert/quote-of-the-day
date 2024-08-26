@@ -1,4 +1,6 @@
+import posthog from 'posthog-js'
 import * as React from 'react'
+import { UsageTracker } from '../components/UsageTracker'
 
 
 /**
@@ -37,7 +39,6 @@ export default async function Page() {
   const birth = await getBirthOfDay();
 
   const [name, ...other] = birth.description.split(',')
-  console.log(name, ...other)
 
   return (
     <main className="h-screen bg-page dark:bg-page text-body dark:text-body wrapper align">
@@ -76,6 +77,13 @@ export default async function Page() {
             <p className="text-body leading-relaxed relative font-serif">{other}</p>
           </section>
         </blockquote>
+
+        <UsageTracker usageFacts={{
+          quoteYear: quote.year ?? quote.date,
+          factYear: dailyFact.year,
+          birthYear: birth.year,
+        }} />
+
       </div>
     </main>
   )
