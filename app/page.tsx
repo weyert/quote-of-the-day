@@ -6,7 +6,6 @@ import { UsageTracker } from '../components/UsageTracker'
 async function getQuoteOfDay() {
   const apiHost = process.env.API_HOST;
   const requestUrl = `${apiHost}/api/randomQuote`;
-  console.log(`Fetching data from: ${requestUrl}...`)
   const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
 }
@@ -14,7 +13,6 @@ async function getQuoteOfDay() {
 async function getFactOfDay() {
   const apiHost = process.env.API_HOST;
   const requestUrl = `${apiHost}/api/randomFact`;
-  console.log(`Fetching data from: ${requestUrl}...`)
   const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
 }
@@ -22,7 +20,6 @@ async function getFactOfDay() {
 async function getBirthOfDay() {
   const apiHost = process.env.API_HOST;
   const requestUrl = `${apiHost}/api/randomBirth`;
-  console.log(`Fetching data from: ${requestUrl}...`)
   const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
 }
