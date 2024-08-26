@@ -2,11 +2,9 @@
 const nextConfig = {
   experimental: {
     swcMinify: true,
-    profiling: true,
-    appDir: true,
-    fontLoaders: [
-      { loader: '@next/font/google', options: { subsets: ['latin'] } },
-    ],
+    // fontLoaders: [
+    //   { loader: '@next/font/google', options: { subsets: ['latin'] } },
+    // ],
   },
 
   poweredByHeader: false,
