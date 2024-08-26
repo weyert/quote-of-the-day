@@ -5,11 +5,10 @@ const nextConfig = {
   },
 
   poweredByHeader: false,
-  // Not supported in Next.js 13
   output: 'standalone',
 
   env: {
-    API_HOST: process.env.NEXT_PUBLIC_API_HOST,
+    API_HOST: process.env.COOLIFY_FQDN ?? process.env.NEXT_PUBLIC_API_HOST,
     POSTHOG_HOST: process.env.POSTHOG_HOST
   },
 
