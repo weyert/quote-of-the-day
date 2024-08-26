@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
+    typedRoutes: true,
     swcMinify: true,
+    instrumentationHook: true,
   },
 
   poweredByHeader: false,
   output: 'standalone',
+  deploymentId: process.env.COOLIFY_CONTAINER_NAME,
 
   env: {
     API_HOST: process.env.COOLIFY_FQDN ?? process.env.NEXT_PUBLIC_API_HOST,
-    POSTHOG_HOST: process.env.POSTHOG_HOST
+    POSTHOG_HOST: process.env.POSTHOG_HOST,
+    NEXT_PUBLIC_SOURCE_COMMIT: process.env.SOURCE_COMMIT,
   },
 
   async rewrites() {

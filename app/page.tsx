@@ -5,6 +5,9 @@ import { UsageTracker } from '../components/UsageTracker'
 
 async function getQuoteOfDay() {
   const apiHost = process.env.API_HOST;
+  console.log(`API_HOST:`, process.env.API_HOST);
+  console.log(`COOLIFY_FQDN:`, process.env.COOLIFY_FQDN);
+  console.log(`NEXT_PUBLIC_SOURCE_COMMIT:`, process.env.NEXT_PUBLIC_SOURCE_COMMIT)
   const requestUrl = `${apiHost}/api/randomQuote`;
   const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
@@ -76,6 +79,12 @@ export default async function Page() {
         }} />
 
       </div>
+
+      <footer className="text-byline leading-relaxed fixed bottom-0 left-0 w-full p-2">
+        <div className="container mx-auto text-end">
+          v{process.env.NEXT_PUBLIC_SOURCE_COMMIT}
+        </div>
+      </footer>
     </main>
   )
 }
