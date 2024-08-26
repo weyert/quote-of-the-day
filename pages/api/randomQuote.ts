@@ -1,6 +1,5 @@
 import allQuotes from '../../facts.json'
-import parse from 'date-fns/parse'
-import format from 'date-fns/format'
+import { parse, format } from 'date-fns'
 
 export default (req, res) => {
   const { author } = req.query
