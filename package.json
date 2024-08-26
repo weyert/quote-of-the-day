@@ -9,7 +9,6 @@
   "packageManager": "pnpm@9.8.0",
   "license": "ISC",
   "dependencies": {
-    "@next/font": "14.2.6",
     "date-fns": "^2.30.0",
     "gsap": "^3.12.5",
     "luxon": "^3.5.0",

@@ -1,11 +1,20 @@
 import * as React from 'react'
 
+
+/**
+ * Retrieves the quote of the day from the API.
+ * @returns {Promise<any>} A promise that resolves to the quote of the day.
+ */
 async function getQuoteOfDay() {
   const apiHost = process.env.API_HOST
   const res = await fetch(`${apiHost}/api/randomQuote`, { cache: 'no-store' })
   return res.json()
 }
 
+/**
+ * Retrieves a random fact of the day from the API.
+ * @returns {Promise<any>} A promise that resolves to the random fact of the day.
+ */
 async function getFactOfDay() {
   const apiHost = process.env.API_HOST
   const res = await fetch(`${apiHost}/api/randomFact`, { cache: 'no-store' })
