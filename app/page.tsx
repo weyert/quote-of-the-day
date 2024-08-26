@@ -21,14 +21,28 @@ async function getFactOfDay() {
   return res.json()
 }
 
+/**
+ * Retrieves a random birth from the API.
+ * @returns {Promise<any>} A promise that resolves to the JSON response from the API.
+ */
+async function getBirthOfDay() {
+  const apiHost = process.env.API_HOST;
+  const res = await fetch(`${apiHost}/api/randomBirth`, { cache: "no-store" });
+  return res.json();
+}
+
 export default async function Page() {
   const quote = await getQuoteOfDay();
   const dailyFact = await getFactOfDay()
+  const birth = await getBirthOfDay();
+
+  const [name, ...other] = birth.description.split(',')
+  console.log(name, ...other)
 
   return (
     <main className="h-screen bg-page dark:bg-page text-body dark:text-body wrapper align">
       <div className="flex flex-col space-y-6 h-full items-center justify-center">
-        <blockquote className="text-2xl w-1/2 flex flex-col space-y-4">
+        <blockquote className="text-2xl w-1/2 flex flex-col space-y-5">
           <header className="flex flex-row uppercase text-byline space-x-2">
             <h1>QUOTE OF THE DAY</h1>
           </header>
@@ -49,6 +63,17 @@ export default async function Page() {
           </header>
           <section>
             <p className="text-body leading-relaxed quote relative font-serif">{dailyFact.description}</p>
+          </section>
+        </blockquote>
+        <div className="border-accent border-2 h-0 w-1/2">&nbsp;</div>
+        <blockquote className="text-2xl w-1/2 flex flex-col space-y-2">
+          <header className="flex flex-row uppercase text-byline space-x-2">
+            <h1>BIRTH TODAY IN</h1>
+            <h2>{birth.year}</h2>
+          </header>
+          <section>
+            <p className="text-body leading-relaxed quote relative font-serif">{name}</p>
+            <p className="text-body leading-relaxed relative font-serif">{other}</p>
           </section>
         </blockquote>
       </div>

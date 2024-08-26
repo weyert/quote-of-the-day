@@ -1,20 +1,27 @@
-import * as React from 'react'
+import * as React from "react";
 
 async function getQuoteOfDay() {
-  const apiHost = process.env.API_HOST
-  const res = await fetch(`${apiHost}/api/randomQuote`, { cache: 'no-store' })
-  return res.json()
+  const apiHost = process.env.API_HOST;
+  const res = await fetch(`${apiHost}/api/randomQuote`, { cache: "no-store" });
+  return res.json();
 }
 
 async function getFactOfDay() {
-  const apiHost = process.env.API_HOST
-  const res = await fetch(`${apiHost}/api/randomFact`, { cache: 'no-store' })
-  return res.json()
+  const apiHost = process.env.API_HOST;
+  const res = await fetch(`${apiHost}/api/randomFact`, { cache: "no-store" });
+  return res.json();
+}
+
+async function getBirthOfDay() {
+  const apiHost = process.env.API_HOST;
+  const res = await fetch(`${apiHost}/api/randomBirth`, { cache: "no-store" });
+  return res.json();
 }
 
 export default async function Page() {
   const quote = await getQuoteOfDay();
-  const dailyFact = await getFactOfDay()
+  const dailyFact = await getFactOfDay();
+  const birth = await getBirthOfDay();
 
   return (
     <main className="h-screen bg-page dark:bg-page text-body dark:text-body wrapper align">
@@ -24,7 +31,9 @@ export default async function Page() {
             <h1>QUOTE OF THE DAY</h1>
           </header>
           <section>
-            <p className="text-body leading-relaxed quote relative font-serif">{quote.content}</p>
+            <p className="text-body leading-relaxed quote relative font-serif">
+              {quote.content}
+            </p>
             {quote.author && (
               <p>
                 <cite className="text-byline not-italic">{quote.author}</cite>
@@ -39,10 +48,12 @@ export default async function Page() {
             <h2>{dailyFact.year}</h2>
           </header>
           <section>
-            <p className="text-body leading-relaxed quote relative font-serif">{dailyFact.description}</p>
+            <p className="text-body leading-relaxed quote relative font-serif">
+              {dailyFact.description}
+            </p>
           </section>
         </blockquote>
       </div>
     </main>
-  )
+  );
 }
