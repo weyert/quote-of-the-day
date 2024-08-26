@@ -54,7 +54,6 @@ export default async function Page() {
             </p>
           </section>
         </blockquote>
-        <pre>{JSON.stringify({ yearOfQuote })}</pre>
 
         <UsageTracker usageFacts={{
           quoteYear: quote.year ?? quote.date,
