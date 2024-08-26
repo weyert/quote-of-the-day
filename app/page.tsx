@@ -1,31 +1,7 @@
 import posthog from 'posthog-js'
 import * as React from 'react'
 import { UsageTracker } from '../components/UsageTracker'
-
-
-async function getQuoteOfDay() {
-  const apiHost = process.env.API_HOST;
-  console.log(`API_HOST:`, process.env.API_HOST);
-  console.log(`COOLIFY_FQDN:`, process.env.COOLIFY_FQDN);
-  console.log(`NEXT_PUBLIC_SOURCE_COMMIT:`, process.env.NEXT_PUBLIC_SOURCE_COMMIT)
-  const requestUrl = `${apiHost}/api/randomQuote`;
-  const res = await fetch(requestUrl, { cache: "no-store" });
-  return res.json();
-}
-
-async function getFactOfDay() {
-  const apiHost = process.env.API_HOST;
-  const requestUrl = `${apiHost}/api/randomFact`;
-  const res = await fetch(requestUrl, { cache: "no-store" });
-  return res.json();
-}
-
-async function getBirthOfDay() {
-  const apiHost = process.env.API_HOST;
-  const requestUrl = `${apiHost}/api/randomBirth`;
-  const res = await fetch(requestUrl, { cache: "no-store" });
-  return res.json();
-}
+import { getBirthOfDay, getFactOfDay, getQuoteOfDay } from '../components/helpers';
 
 export default async function Page() {
   const quote = await getQuoteOfDay();
