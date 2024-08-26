@@ -2,20 +2,26 @@ import * as React from "react";
 import { UsageTracker } from "../../components/UsageTracker";
 
 async function getQuoteOfDay() {
-  const apiHost = "";
-  const res = await fetch(`${apiHost}/api/randomQuote`, { cache: "no-store" });
+  const apiHost = process.env.API_HOST;
+  const requestUrl = `${apiHost}/api/randomQuote`;
+  console.log(`Fetching data from: ${requestUrl}...`)
+  const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
 }
 
 async function getFactOfDay() {
-  const apiHost = "";
-  const res = await fetch(`${apiHost}/api/randomFact`, { cache: "no-store" });
+  const apiHost = process.env.API_HOST;
+  const requestUrl = `${apiHost}/api/randomFact`;
+  console.log(`Fetching data from: ${requestUrl}...`)
+  const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
 }
 
 async function getBirthOfDay() {
-  const apiHost = "";
-  const res = await fetch(`${apiHost}/api/randomBirth`, { cache: "no-store" });
+  const apiHost = process.env.API_HOST;
+  const requestUrl = `${apiHost}/api/randomBirth`;
+  console.log(`Fetching data from: ${requestUrl}...`)
+  const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
 }
 

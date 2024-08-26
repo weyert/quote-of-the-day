@@ -3,33 +3,27 @@ import * as React from 'react'
 import { UsageTracker } from '../components/UsageTracker'
 
 
-/**
- * Retrieves the quote of the day from the API.
- * @returns {Promise<any>} A promise that resolves to the quote of the day.
- */
 async function getQuoteOfDay() {
-  const apiHost = ""
-  const res = await fetch(`${apiHost}/api/randomQuote`, { cache: 'no-store' })
-  return res.json()
+  const apiHost = process.env.API_HOST;
+  const requestUrl = `${apiHost}/api/randomQuote`;
+  console.log(`Fetching data from: ${requestUrl}...`)
+  const res = await fetch(requestUrl, { cache: "no-store" });
+  return res.json();
 }
 
-/**
- * Retrieves a random fact of the day from the API.
- * @returns {Promise<any>} A promise that resolves to the random fact of the day.
- */
 async function getFactOfDay() {
-  const apiHost = ""
-  const res = await fetch(`${apiHost}/api/randomFact`, { cache: 'no-store' })
-  return res.json()
+  const apiHost = process.env.API_HOST;
+  const requestUrl = `${apiHost}/api/randomFact`;
+  console.log(`Fetching data from: ${requestUrl}...`)
+  const res = await fetch(requestUrl, { cache: "no-store" });
+  return res.json();
 }
 
-/**
- * Retrieves a random birth from the API.
- * @returns {Promise<any>} A promise that resolves to the JSON response from the API.
- */
 async function getBirthOfDay() {
-  const apiHost = "";
-  const res = await fetch(`${apiHost}/api/randomBirth`, { cache: "no-store" });
+  const apiHost = process.env.API_HOST;
+  const requestUrl = `${apiHost}/api/randomBirth`;
+  console.log(`Fetching data from: ${requestUrl}...`)
+  const res = await fetch(requestUrl, { cache: "no-store" });
   return res.json();
 }
 
