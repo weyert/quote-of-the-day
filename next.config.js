@@ -2,9 +2,6 @@
 const nextConfig = {
   experimental: {
     swcMinify: true,
-    // fontLoaders: [
-    //   { loader: '@next/font/google', options: { subsets: ['latin'] } },
-    // ],
   },
 
   poweredByHeader: false,
@@ -12,7 +9,7 @@ const nextConfig = {
   output: 'standalone',
 
   env: {
-    API_HOST: process.env.API_HOST
+    API_HOST: process.env.NEXT_PUBLIC_API_HOST
   }
 };
 
