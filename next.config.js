@@ -1,7 +1,3 @@
-const envKeys = Object.keys(process.env)
-console.log(`Fetching the known environment variables`)
-envKeys.forEach(name => console.log(`${name}=${process.env[name]}`))
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -12,7 +8,7 @@ const nextConfig = {
   output: 'standalone',
 
   env: {
-    API_HOST: process.env.NEXT_PUBLIC_API_HOST,
+    API_HOST: process.env.COOLIFY_FQDN ?? process.env.NEXT_PUBLIC_API_HOST,
     POSTHOG_HOST: process.env.POSTHOG_HOST
   },
 
