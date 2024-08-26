@@ -1,3 +1,7 @@
+const envKeys = Object.keys(process.env)
+console.log(`Fetching the known environment variables`)
+envKeys.forEach(name => console.log(`${name}=${process.env[name]}`))
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -5,7 +9,6 @@ const nextConfig = {
   },
 
   poweredByHeader: false,
-  // Not supported in Next.js 13
   output: 'standalone',
 
   env: {
