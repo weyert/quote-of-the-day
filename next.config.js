@@ -9,7 +9,8 @@ const nextConfig = {
   output: 'standalone',
 
   env: {
-    API_HOST: process.env.NEXT_PUBLIC_API_HOST
+    API_HOST: process.env.NEXT_PUBLIC_API_HOST,
+    POSTHOG_HOST: process.env.POSTHOG_HOST
   },
 
   async rewrites() {

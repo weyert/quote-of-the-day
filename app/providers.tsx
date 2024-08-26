@@ -9,6 +9,7 @@ if (typeof window !== 'undefined') {
     person_profiles: 'always', // or 'always' to create profiles for anonymous users as well
   })
 }
+
 export function CSPostHogProvider({ children }) {
   return <PostHogProvider client={posthog}>{children}</PostHogProvider>
 }
