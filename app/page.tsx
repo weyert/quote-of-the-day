@@ -1,31 +1,7 @@
 import posthog from 'posthog-js'
 import * as React from 'react'
 import { UsageTracker } from '../components/UsageTracker'
-
-
-async function getQuoteOfDay() {
-  const apiHost = process.env.API_HOST;
-  const requestUrl = `${apiHost}/api/randomQuote`;
-  console.log(`Fetching data from: ${requestUrl}...`)
-  const res = await fetch(requestUrl, { cache: "no-store" });
-  return res.json();
-}
-
-async function getFactOfDay() {
-  const apiHost = process.env.API_HOST;
-  const requestUrl = `${apiHost}/api/randomFact`;
-  console.log(`Fetching data from: ${requestUrl}...`)
-  const res = await fetch(requestUrl, { cache: "no-store" });
-  return res.json();
-}
-
-async function getBirthOfDay() {
-  const apiHost = process.env.API_HOST;
-  const requestUrl = `${apiHost}/api/randomBirth`;
-  console.log(`Fetching data from: ${requestUrl}...`)
-  const res = await fetch(requestUrl, { cache: "no-store" });
-  return res.json();
-}
+import { getBirthOfDay, getFactOfDay, getQuoteOfDay } from '../components/helpers';
 
 export default async function Page() {
   const quote = await getQuoteOfDay();
@@ -79,6 +55,12 @@ export default async function Page() {
         }} />
 
       </div>
+
+      <footer className="text-byline leading-relaxed fixed bottom-0 left-0 w-full p-2">
+        <div className="container mx-auto text-end">
+          v{process.env.NEXT_PUBLIC_SOURCE_COMMIT}
+        </div>
+      </footer>
     </main>
   )
 }
